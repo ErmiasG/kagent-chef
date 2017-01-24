@@ -34,7 +34,7 @@ default.kagent.certificate_file            = "server.pem"
 # dashboard ip:port endpoint
 default.kagent.dashboard.ip                = "10.0.2.15"
 default.kagent.dashboard.port              = "8080"  
-default.kagent.dashboard_app               = "hopsworks"
+default.kagent.dashboard_app               = "hopsworks-api"
 
 
 # local settings for agent
