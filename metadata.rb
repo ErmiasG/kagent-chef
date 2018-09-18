@@ -102,6 +102,10 @@ attribute "kagent/network/interface",
           :description => "Define the network intefaces (eth0, enp0s3)",
           :type => "string"
 
+attribute "kagent/network/infiniband",
+          :description => "Define the infiniband intefaces (ib0)",
+          :type => "string"
+
 attribute "ntp/install",
           :description => "Install Network Time Protocol (default: false)",
           :type => "string"

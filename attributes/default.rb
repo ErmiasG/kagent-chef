@@ -59,6 +59,7 @@ default["kagent"]["logging_level"]                 = "INFO"
 default["kagent"]["max_log_size"]                  = "10000000"
 
 default["kagent"]["network"]["interface"]          = ""
+default["kagent"]["network"]["infiniband"]         = ""
 
 default["kagent"][:default][:public_ips]              = ['10.0.2.15']
 default["kagent"][:default][:private_ips]             = ['10.0.2.15']
