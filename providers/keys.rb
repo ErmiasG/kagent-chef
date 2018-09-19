@@ -62,7 +62,7 @@ action :return_publickey do
  cb_user = new_resource.cb_user
  cb_group = new_resource.cb_group
 
- node.default["#{cb}"]["#{recipeName}"][:public_key] = contents
+ node.default["#{tg_cb}"]["#{tg_recipeName}"][:public_key] = contents
 
   template "#{homedir}/.ssh/config" do
     source "ssh_config.erb" 
