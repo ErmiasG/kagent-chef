@@ -57,8 +57,8 @@ action :return_publickey do
  Chef::Log.info "Public key read is: #{contents}"
  cb = new_resource.cb_name
  recipeName = new_resource.cb_recipe
- tg_cb = new_resource.tg_name.nil? || new_resource.tg_name.empty? new_resource.cb_name : new_resource.tg_name
- tg_recipeName = new_resource.tg_recipe.nil? || new_resource.tg_recipe.empty? new_resource.cb_name : new_resource.tg_recipe
+ tg_cb = new_resource.tg_name.nil? || new_resource.tg_name.empty? ? new_resource.cb_name : new_resource.tg_name
+ tg_recipeName = new_resource.tg_recipe.nil? || new_resource.tg_recipe.empty? ? new_resource.cb_name : new_resource.tg_recipe
  cb_user = new_resource.cb_user
  cb_group = new_resource.cb_group
 
