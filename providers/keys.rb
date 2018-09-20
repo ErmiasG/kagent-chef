@@ -28,9 +28,9 @@ end
 
 
 action :generate do
-  homedir = "#{new_resource.homedir}"
-  cb_user = "#{new_resource.cb_user}"
-  cb_group = "#{new_resource.cb_group}"
+  homedir = new_resource.homedir
+  cb_user = new_resource.cb_user
+  cb_group = new_resource.cb_group
 
   bash "generate-ssh-keypair-for-#{homedir}" do
     user cb_user
@@ -49,7 +49,7 @@ end
 # authorized_keys of another user
 #
 action :return_publickey do
- homedir = "#{new_resource.homedir}"
+ homedir = new_resource.homedir
  contents = ::IO.read("#{homedir}/.ssh/id_rsa.pub")
 
  raise if contents.empty?
@@ -57,8 +57,8 @@ action :return_publickey do
  Chef::Log.info "Public key read is: #{contents}"
  cb = new_resource.cb_name
  recipeName = new_resource.cb_recipe
- tg_cb = new_resource.tg_name.nil? || new_resource.tg_name.empty? ? new_resource.cb_name : new_resource.tg_name
- tg_recipeName = new_resource.tg_recipe.nil? || new_resource.tg_recipe.empty? ? new_resource.cb_name : new_resource.tg_recipe
+ tg_cb = new_resource.tg_name.nil? || new_resource.tg_name.empty? ? cb : new_resource.tg_name
+ tg_recipeName = new_resource.tg_recipe.nil? || new_resource.tg_recipe.empty? ? recipeName : new_resource.tg_recipe
  cb_user = new_resource.cb_user
  cb_group = new_resource.cb_group
 
@@ -88,11 +88,11 @@ end
 # upstream user to its authorized_keys file
 #
 action :get_publickey do
-  homedir = "#{new_resource.homedir}"
-  cb = "#{new_resource.cb_name}" 
-  recipeName = "#{new_resource.cb_recipe}"
-  cb_user = "#{new_resource.cb_user}"
-  cb_group = "#{new_resource.cb_group}"
+  homedir = new_resource.homedir
+  cb = new_resource.cb_name
+  recipeName = new_resource.cb_recipe
+  cb_user = new_resource.cb_user
+  cb_group = new_resource.cb_group
 
   key_contents = node["#{cb}"]["#{recipeName}"][:public_key]
   Chef::Log.debug "Public key read is: #{key_contents}"
